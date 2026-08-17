@@ -1,3 +1,16 @@
+# ------------------------------------------------------------------------------
+# CNTSeg and CNTSeg-v2 (adapted implementation)
+#
+# This code provides implementations of CNTSeg and CNTSeg-v2 that have been
+# integrated into our evaluation framework for CNsEMD.
+#
+# The official code for CNTSeg and CNTSeg-v2 is available at:
+#     [https://github.com/IPIS-XieLei/CNTSeg]
+#
+# Please refer to the original repositories for details, license information,
+# and any additional usage requirements.
+# ------------------------------------------------------------------------------
+
 import functools
 import torch
 import torch.nn as nn
