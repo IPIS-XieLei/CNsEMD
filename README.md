@@ -147,7 +147,7 @@ Place the downloaded weight folder beside `predict_single_case.py`:
 Then run:
 
 ```bash
-python predict_single_case.py --t1 /path/to/case-T1.nii.gz --dec /path/to/case-DEC.nii.gz
+python predict_single_case.py --result-root /path/to/CNsEMD_weights --t1 /path/to/case-T1.nii.gz --dec /path/to/case-DEC.nii.gz
 ```
 
 Defaults:
@@ -158,7 +158,7 @@ Defaults:
 - device: `cuda:0` when CUDA is available, otherwise CPU;
 - output: `<T1-stem>-PHMNet-prediction.nii.gz` beside the input T1w image.
 
-All settings except `--t1` and `--dec` are optional. For example:
+All settings except `--t1`, `--dec`, and `--result-root` are optional. For example:
 
 ```bash
 python predict_single_case.py \
