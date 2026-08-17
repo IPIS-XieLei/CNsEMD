@@ -153,10 +153,9 @@ python predict_single_case.py --result-root /path/to/CNsEMD_weights --t1 /path/t
 Defaults:
 
 - model: `PHMNet`;
-- weights: `./CNsEMD_weights` relative to this repository;
 - ensemble: folds 0–4;
 - device: `cuda:0` when CUDA is available, otherwise CPU;
-- output: `<T1-stem>-PHMNet-prediction.nii.gz` beside the input T1w image.
+- output: `<T1-stem>_DEC-<model>-prediction.nii.gz` beside the input T1w image.
 
 All settings except `--t1`, `--dec`, and `--result-root` are optional. For example:
 
@@ -313,22 +312,9 @@ python summarize_357T_metrics.py \
   information.
 - DEC volumes must use channel-last layout `(X, Y, Z, 3)`.
 - Training and batch evaluation use the fixed five-fold split files.
-- Model selection must use only the development-set training and validation
-  folds. The 40-case test set is reserved for final evaluation.
 - Five-fold ensemble inference requires checkpoints for `fold_0` through
   `fold_4`.
-- `predict_single_case.py` supports center padding for volumes smaller than
-  the target crop. The preprocessing and batch-test scripts expect volumes
-  large enough for the fixed center crop.
 
-## Data and code availability
-
-The CNsEMD data and pretrained model weights have been deposited in
-ScienceDB under DOI
-[10.57760/sciencedb.44096](https://doi.org/10.57760/sciencedb.44096).
-The record is currently private and will become publicly accessible after
-acceptance of the associated paper. Source code is provided in this GitHub
-repository.
 
 ## Citation
 
