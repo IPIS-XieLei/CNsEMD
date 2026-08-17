@@ -45,7 +45,7 @@ def get_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output",
         default=None,
-        help="Output label path. Default: <T1 stem>-<model>-prediction.nii.gz",
+        help="Output label path. Default: <T1 stem>_DEC-<model>-prediction.nii.gz",
     )
     parser.add_argument(
         "--folds",
@@ -249,7 +249,7 @@ def default_output_path(t1_path: Path, model_name: str) -> Path:
         name = name[:-7]
     elif name.endswith(".nii"):
         name = name[:-4]
-    return t1_path.with_name(f"{name}-{model_name}-prediction.nii.gz")
+    return t1_path.with_name(f"{name}_DEC-{model_name}-prediction.nii.gz")
 
 
 def validate_inputs(t1_img: nib.Nifti1Image, dec_img: nib.Nifti1Image) -> None:
