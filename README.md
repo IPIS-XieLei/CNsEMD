@@ -315,17 +315,22 @@ python summarize_357T_metrics.py \
 - Five-fold ensemble inference requires checkpoints for `fold_0` through
   `fold_4`.
 
+## Get DEC images from your ori DWI data using MRtrix3
+
+```
+	mrconvert /path/to/data.nii.gz /path/to/DWI.mif -fslgrad /path/to/bvecs /path/to/bvals
+    
+	dwi2tensor /path/to/DWI.mif /path/to/tensor.mif
+    
+	tensor2metric /path/to/tensor.mif -vector /path/to/DEC.nii.gz
+```
+
 
 ## Citation
 
 If you use CNsEMD or PHM-Net, please cite the associated paper and dataset.
 The final paper citation and BibTeX entry will be added after acceptance.
 
-Dataset identifier:
-
-```text
-CNsEMD. ScienceDB. https://doi.org/10.57760/sciencedb.44096
-```
 
 ## License
 
@@ -335,4 +340,4 @@ datasets and the ScienceDB record.
 
 ## Contact
 
-For questions about the code or dataset, please open a GitHub issue.
+For questions about the code or dataset, please open a GitHub issue or send an email to leix@zjut.edu.cn.
