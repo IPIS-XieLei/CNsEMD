@@ -1,4 +1,4 @@
-
+# CNsEMD: An Expert-Annotated Multi-Field-Strength MRI Dataset and a Hyperspherical Manifold Network for Multimodal Cranial Nerve Tract Segmentation
 
 Official implementation of **PHM-Net** and the accompanying **CNsEMD**
 dataset for multimodal cranial nerve (CN) tract segmentation from T1-weighted
