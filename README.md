@@ -1,16 +1,14 @@
-# CNsEMD and PHM-Net
+
 
 Official implementation of **PHM-Net** and the accompanying **CNsEMD**
-dataset for multimodal cranial nerve (CN) parcellation from T1-weighted
+dataset for multimodal cranial nerve (CN) tract segmentation from T1-weighted
 (T1w) and direction-encoded color (DEC) MRI.
+
+# CNsEMD
 
 CNsEMD contains 202 expert-annotated multimodal MRI examinations acquired
 at 3T, 5T, and 7T. To our knowledge, upon release it will be the first
-public multimodal MRI dataset with expert voxel-level annotations for CN
-parcellation. PHM-Net maintains consistent angular geometry from DEC
-orientation encoding through cross-modal interaction to voxel-wise
-classification.
-
+public multimodal MRI dataset with expert voxel-level annotations for CN tract segmentation.
 This repository provides code for data preprocessing, five-fold training,
 batch evaluation, field-strength-specific metric summarization, and
 single-case inference with pretrained models.
@@ -21,16 +19,14 @@ The CNsEMD dataset and pretrained weights have been deposited in ScienceDB:
 
 **[https://doi.org/10.57760/sciencedb.44096](https://doi.org/10.57760/sciencedb.44096)**
 
-The repository record and files are currently not publicly accessible. They
-will be released after the associated paper is accepted. Until then, the DOI
-is provided only as the permanent identifier for the planned release.
+Access is currently restricted; the data will be made publicly available upon acceptance of the associated paper.
 
 After release, the ScienceDB deposit will contain:
 
 - `CNsEMD`: T1w images, DEC images, expert reference labels, and the fixed
   training/test split files;
 - `CNsEMD_weights`: pretrained five-fold checkpoints for PHM-Net and the two
-  comparison models used by the inference scripts.
+  comparison models (CNTSeg and CNTSeg-v2) used by the inference scripts.
 
 ## Dataset contents
 
@@ -55,9 +51,18 @@ download_root/
 │   ├── splits_final_train.json
 │   └── splits_final_test.json
 └── CNsEMD_weights/
-    ├── PHMNet/
-    ├── CNTSegV2_Dedicated/
-    └── CNTSeg_V1_T1DEC/
+    └── PHMNet/
+        ├── fold_0/BEST_MODEL.pth
+        ├── fold_1/BEST_MODEL.pth
+        ├── fold_2/BEST_MODEL.pth
+        ├── fold_3/BEST_MODEL.pth
+        └── fold_4/BEST_MODEL.pth
+    └── CNTSeg_V1/
+        ├── fold_0/BEST_MODEL.pth
+        ├── ...
+    └── CNTSegV2_Dedicated/
+        ├── fold_0/BEST_MODEL.pth
+        ├── ...
 ```
 
 File prefixes identify the field strength. For example,
@@ -76,23 +81,21 @@ File prefixes identify the field strength. For example,
 
 The annotations represent five bilateral CN pairs. CN VII and CN VIII are
 combined into one foreground class because of their close anatomical
-proximity. The annotations were refined by three postgraduate annotators
-with medical training, reviewed by two neurosurgeons with more than five
-years of clinical experience, and assessed by a senior neurosurgeon with
-more than ten years of clinical experience.
+proximity.
 
 ### Evaluation split
 
-- Development set: 162 cases, including 82 at 3T, 40 at 5T, and 40 at 7T.
-- Independent test set: 40 cases, including 20 at 3T, 10 at 5T, and 10 at
+- train/val set: 162 cases, including 82 at 3T, 40 at 5T, and 40 at 7T.
+- test set: 40 cases, including 20 at 3T, 10 at 5T, and 10 at
   7T.
-- The development set is divided into five training/validation folds.
-- All model selection uses only the training and validation data.
+- The train/val set is divided into five training/validation folds.
 - The 3T, 5T, and 7T results are subgroup analyses of the same 40-case test
   set.
 
 The fixed partitions are stored in `splits_final_train.json` and
 `splits_final_test.json`.
+
+# PHM-Net
 
 ## Repository structure
 
@@ -122,8 +125,8 @@ conda activate cnsemd
 ```
 
 Install PyTorch and torchvision for the CUDA version available on your
-machine by following the
-[official PyTorch installation guide](https://pytorch.org/get-started/locally/).
+machine by following th official PyTorch installation guide.
+
 Then install the remaining dependencies:
 
 ```bash
@@ -141,24 +144,10 @@ spatial shape and affine must match the T1w image.
 
 Place the downloaded weight folder beside `predict_single_case.py`:
 
-```text
-CNsEMD_code/
-├── predict_single_case.py
-└── CNsEMD_weights/
-    └── PHMNet/
-        ├── fold_0/BEST_MODEL.pth
-        ├── fold_1/BEST_MODEL.pth
-        ├── fold_2/BEST_MODEL.pth
-        ├── fold_3/BEST_MODEL.pth
-        └── fold_4/BEST_MODEL.pth
-```
-
 Then run:
 
 ```bash
-python predict_single_case.py \
-  --t1 /path/to/case-T1.nii.gz \
-  --dec /path/to/case-DEC.nii.gz
+python predict_single_case.py --t1 /path/to/case-T1.nii.gz --dec /path/to/case-DEC.nii.gz
 ```
 
 Defaults:
