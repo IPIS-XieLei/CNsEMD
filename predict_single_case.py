@@ -22,8 +22,6 @@ from torch.utils.data import DataLoader, Dataset
 MODEL_CHOICES = ("PHMNet", "CNTSeg_V1_T1DEC", "CNTSegV2_Dedicated")
 TARGET_SHAPE = (128, 160, 128)
 NUM_CLASSES = 5
-DEFAULT_RESULT_ROOT = Path(__file__).resolve().parent / "CNsEMD_weights"
-
 
 def get_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -39,10 +37,9 @@ def get_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--result-root",
-        default=str(DEFAULT_RESULT_ROOT),
+        required=True,
         help=(
-            "Root directory containing model checkpoints "
-            f"(default: {DEFAULT_RESULT_ROOT})."
+            "Path to model checkpoints "
         ),
     )
     parser.add_argument(
