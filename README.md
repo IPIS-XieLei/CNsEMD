@@ -23,8 +23,7 @@ Access is currently restricted; the data will be made publicly available upon ac
 
 After release, the ScienceDB deposit will contain:
 
-- `CNsEMD`: T1w images, DEC images, expert reference labels, and the fixed
-  training/test split files;
+- `CNsEMD`: T1w images (The T1w images are not included in CNsEMD. Users can obtain the corresponding T1w images from the official Human Connectome Project (HCP) and Diff5T repositories. Alternatively, T1w images can be requested by sending an email to leix@zjut.edu.cn.), DEC images, expert reference labels, and the fixed training/test split files;
 - `CNsEMD_weights`: pretrained five-fold checkpoints for PHM-Net and the two
   comparison models (CNTSeg and CNTSeg-v2) used by the inference scripts.
 
