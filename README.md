@@ -22,12 +22,12 @@ single-case inference with pretrained models.
 
 ## Release status
 
-The CNsEMD dataset and pretrained model weights have been deposited in
+The CNsEMD dataset and pretrained model weights will be deposited in
 ScienceDB:
 
 **[https://doi.org/10.57760/sciencedb.44096](https://doi.org/10.57760/sciencedb.44096)**
 
-Access is currently restricted. The ScienceDB record and its associated files
+The ScienceDB record and its associated files
 will be made publicly available after acceptance of the associated paper.
 
 After release, the ScienceDB deposit will contain:
@@ -386,10 +386,10 @@ information are consistent.
 The source code for PHM-Net, model training, evaluation, and single-case
 inference is available in this GitHub repository.
 
-The CNsEMD dataset and pretrained model weights have been deposited in
+The CNsEMD dataset and pretrained model weights will be deposited in
 ScienceDB under DOI
 [10.57760/sciencedb.44096](https://doi.org/10.57760/sciencedb.44096).
-The ScienceDB record is currently access-restricted and will become publicly
+The ScienceDB record will become publicly
 available after acceptance of the associated paper.
 
 The public release will include redistributable DEC images derived from the
