@@ -1,14 +1,14 @@
-# CNsEMD: An Expert-Annotated Multi-Field-Strength MRI Dataset and a Hyperspherical Manifold Network for Multimodal Cranial Nerve Tract Segmentation
+# CNsEMD: An Expert-Annotated Multi-Field-Strength MRI Dataset and a Hyperspherical Manifold Network for Multimodal Cranial Nerve Parcellation
 
 Official implementation of **PHM-Net** and the accompanying **CNsEMD**
-dataset for multimodal cranial nerve (CN) tract segmentation using
+dataset for multimodal cranial nerve (CN) Parcellation using
 T1-weighted (T1w) and direction-encoded color (DEC) MRI.
 
 # CNsEMD
 
 CNsEMD contains 202 expert-annotated multimodal MRI examinations acquired
 at 3T, 5T, and 7T. To our knowledge, upon release it will be the first
-public multimodal MRI dataset with expert voxel-level annotations for CN tract segmentation.
+public multimodal MRI dataset with expert voxel-level annotations for CN Parcellation.
 
 The public release will include redistributable DEC images derived from the
 original diffusion-weighted imaging (DWI) data, expert reference labels, and
